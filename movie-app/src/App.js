@@ -9,7 +9,7 @@ import './App.css';
 
 const App = () => {
   return (
-    <div class="flex h-screen">
+    <div className="flex h-screen">
     <Sidebar/>
     <NavBar/>
 </div>
