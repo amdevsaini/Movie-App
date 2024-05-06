@@ -1,63 +1,57 @@
-// Watchlist.js
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from "react";
 
-const Watchlist = ({ user }) => {
-  const [movies, setMovies] = useState([]);
-  const [watchlist, setWatchlist] = useState([]);
-
-  useEffect(() => {
-    // Fetch movie data when component mounts
-    axios.get('http://www.omdbapi.com/?apikey=YOUR_API_KEY&s=Avengers')
-      .then(response => setMovies(response.data.Search))
-      .catch(error => console.error(error));
-  }, []);
-
-  const addToWatchlist = (movie) => {
-    setWatchlist([...watchlist, movie]);
-  };
-
-  const removeFromWatchlist = (movie) => {
-    const updatedWatchlist = watchlist.filter(item => item.imdbID !== movie.imdbID);
-    setWatchlist(updatedWatchlist);
-  };
-
+const Watchlist = () => {
   return (
-    <div className="max-w-4xl mx-auto">
-      <h2 className="text-2xl font-semibold mb-4">Welcome, {user.email}!</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div>
-          <h3 className="text-xl mb-2">Your Watchlist</h3>
-          <ul>
-            {watchlist.map(movie => (
-              <li key={movie.imdbID} className="flex items-center justify-between mb-2">
-                {movie.Title} ({movie.Year}){' '}
-                <button
-                  className="bg-red-500 text-white px-3 py-1 rounded"
-                  onClick={() => removeFromWatchlist(movie)}
-                >
-                  Remove
-                </button>
-              </li>
-            ))}
-          </ul>
+    <div class="relative m-3 flex w-full max-w-56 flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
+      <a class="relative flex h-60 overflow-hidden " href="#">
+        <img
+          class="object-cover"
+          src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+          alt="product image"
+        />
+        <span class="absolute top-0 left-0 p-1 bg-black text-center text-sm font-medium text-white">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 4.5v15m7.5-7.5h-15"
+            />
+          </svg>
+        </span>
+      </a>
+      <div class=" px-2 pb-5">
+        <div class="flex items-end justify-end mt-1">
+          <div class="flex items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="w-6 h-6 text-yellow-300"
+            >
+              <path
+                fillRule="evenodd"
+                d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-2.625 6c-.54 0-.828.419-.936.634a1.96 1.96 0 0 0-.189.866c0 .298.059.605.189.866.108.215.395.634.936.634.54 0 .828-.419.936-.634.13-.26.189-.568.189-.866 0-.298-.059-.605-.189-.866-.108-.215-.395-.634-.936-.634Zm4.314.634c.108-.215.395-.634.936-.634.54 0 .828.419.936.634.13.26.189.568.189.866 0 .298-.059.605-.189.866-.108.215-.395.634-.936.634-.54 0-.828-.419-.936-.634a1.96 1.96 0 0 1-.189-.866c0-.298.059-.605.189-.866Zm2.023 6.828a.75.75 0 1 0-1.06-1.06 3.75 3.75 0 0 1-5.304 0 .75.75 0 0 0-1.06 1.06 5.25 5.25 0 0 0 7.424 0Z"
+                clipRule="evenodd"
+              />
+            </svg>
+            <p className="pl-2">
+              <span class="text-1xl font-bold">68 </span>
+              <span class="text-xs text-slate-900">/ 100</span>
+            </p>
+          </div>
         </div>
-        <div>
-          <h3 className="text-xl mb-2">Search Results</h3>
-          <ul>
-            {movies.map(movie => (
-              <li key={movie.imdbID} className="flex items-center justify-between mb-2">
-                {movie.Title} ({movie.Year}){' '}
-                <button
-                  className="bg-blue-500 text-white px-3 py-1 rounded"
-                  onClick={() => addToWatchlist(movie)}
-                >
-                  Add to Watchlist
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <a href="#">
+          <h5 class="text-xl tracking-tight text-slate-900">Top Gun:</h5>
+          <h5 class="text-xl tracking-tight text-slate-900">Maverick</h5>
+          <h5 class="text-xl tracking-tight text-gray-300">(2022)</h5>
+        </a>
       </div>
     </div>
   );
