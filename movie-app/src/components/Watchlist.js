@@ -12,7 +12,7 @@ const Watchlist = ({searchValue}) => {
   useEffect(() => {
     const fetchMovieData = async () => {
       try {
-        const response = await fetch("http://www.omdbapi.com/?s=Avengers&apikey=350d7334&page=1");
+        const response = await fetch("http://www.omdbapi.com/?s=Avengers&apikey=44b326af&page=1");
         const data = await response.json();
         setMovieData(data);
       } catch (error) {
