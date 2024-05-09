@@ -28,7 +28,7 @@ const Watchlist = ({searchValue}) => {
     const fetchMovieData = async () => {
       try {
         const updateValue = convertSpacesToPlus(searchValue);
-        const response = await fetch(`http://www.omdbapi.com/?t=${updateValue}&apikey=350d7334&page=1`);
+        const response = await fetch(`http://www.omdbapi.com/?t=${updateValue}&apikey=44b326af&page=1`);
         console.log("+++++++++++", response);
         const data = await response.json();
         data['Search'] = [data];
